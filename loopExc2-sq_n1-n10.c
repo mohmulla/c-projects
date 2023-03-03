@@ -8,7 +8,7 @@ int main(void)
 	int	  n = 0;
 
 	// style
-	printf("printing square root of number\n\n");
+	printf("printing square of numbers\n\n");
 	printf("n  |   n^2\n");
 	printf("-- | -----\n");
 	
