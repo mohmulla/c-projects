@@ -1,39 +1,93 @@
-// program that reverses entered number
-
+// program that isolates numbers and translates it to english
 
 #include <stdio.h>
-#include <SDL.h>
 
-#define _CRT_SECURE_NO_WARNINGS
-#pragma warning(suppress : 4996)
-
-int main(int argc, char* argv[])
+int main(void)
 {
-	int number = 0;
-	int display = 0;
+	int      number = 0;
+	int 	      n = 0;
+	int    isolated = 0;
+	int      digits = 0;
+	int    r_number = 0;
+	int  r_isolated = 0;
+	int    r_digits = 0;
 
-	printf("enter number: ");
+	// prompt entry
+	printf("enter number : ");
 	scanf("%i", &number);
 
+	//find digits
+	n = number;
 
-	printf("number %i reversed is ", number);
-
-	while (number > 0)
+	if (n == 0)
 	{
-		display = number % 10;
-		printf("%i", display);
-		number = number / 10;
-
+		digits++;
 	}
 
+	while (n > 0)
+	{
+		n = n / 10;
+		digits++;
+	}
+
+	// reverse number
+	for (int i = digits; i > 0; i--)
+	{
+		r_isolated = number % 10;
+		
+		for (int j = 1; j < i; j++)
+		{
+			r_isolated = r_isolated * 10;
+		}
+
+		r_number = r_number + r_isolated;
+		number = number / 10;
+	}
+	
+	// isolate number per digit
+	for (digits = digits; digits > 0; digits--)
+	{
+		isolated = r_number % 10;
+		r_number = r_number / 10;
+
+		switch (isolated)
+		{
+		case 0:
+			printf("zero");
+			break;
+		case 1:
+			printf("one");
+			break;
+		case 2:
+			printf("two");
+			break;
+		case 3:
+			printf("three");
+			break;
+		case 4:
+			printf("four");
+			break;
+		case 5:
+			printf("five");
+			break;
+		case 6:
+			printf("six");
+			break;
+		case 7:
+			printf("seven");
+			break;
+		case 8:
+			printf("eight");
+			break;
+		case 9:
+			printf("nine");
+			break;
+
+		}
+		printf(" ");
+	}
+	
 	printf("\n");
-
-
-	
-	
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "system", "hello", NULL);
-
-	
 
 	return 0;
 }
