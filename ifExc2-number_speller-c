@@ -4,10 +4,13 @@
 
 int main(void)
 {
-	int   number = 0;
-	int		   n = 0;
-	int isolated = 0;
-	int   digits = 0;
+	int      number = 0;
+	int 	      n = 0;
+	int    isolated = 0;
+	int      digits = 0;
+	int    r_number = 0;
+	int  r_isolated = 0;
+	int    r_digits = 0;
 
 	// prompt entry
 	printf("enter number : ");
@@ -27,13 +30,25 @@ int main(void)
 		digits++;
 	}
 
-	printf("number of digits %i\n", digits);
+	// reverse number
+	for (int i = digits; i > 0; i--)
+	{
+		r_isolated = number % 10;
+		
+		for (int j = 1; j < i; j++)
+		{
+			r_isolated = r_isolated * 10;
+		}
 
+		r_number = r_number + r_isolated;
+		number = number / 10;
+	}
+	
 	// isolate number per digit
 	for (digits = digits; digits > 0; digits--)
 	{
-		isolated = number % (digits * 10);
-		number = number / 10;
+		isolated = r_number % 10;
+		r_number = r_number / 10;
 
 		switch (isolated)
 		{
@@ -76,3 +91,4 @@ int main(void)
 
 	return 0;
 }
+
